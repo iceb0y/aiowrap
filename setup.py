@@ -1,7 +1,7 @@
 import setuptools
 
 setuptools.setup(name='aiowrap',
-                 version='0.1',
+                 version='0.1.1',
                  author='iceboy',
                  author_email='me@iceboy.org',
                  description=("Tools for wrapping existing synchronous "

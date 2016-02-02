@@ -11,7 +11,7 @@ def wrap_async(func):
         def callback(fut):
             try:
                 cur.switch(fut.result())
-            except Exception as e:
+            except BaseException as e:
                 cur.throw(e)
         fut.add_done_callback(callback)
         return cur.parent.switch()
@@ -25,7 +25,7 @@ def wrap_sync(func):
         def green():
             try:
                 fut.set_result(func(*args, **kwargs))
-            except Exception as e:
+            except BaseException as e:
                 fut.set_exception(e)
         greenlet.greenlet(green).switch()
         return fut
